@@ -1148,6 +1148,15 @@ NSString *const CUSTOM_SELECTOR = @"_CUSTOM_SELECTOR_";
   WKNavigationType navigationType = navigationAction.navigationType;
   NSURLRequest *request = navigationAction.request;
   BOOL isTopFrame = [request.URL isEqual:request.mainDocumentURL];
+  BOOL hasTargetFrame = navigationAction.targetFrame != nil;
+
+  if (_onOpenWindow && !hasTargetFrame) {
+    NSMutableDictionary<NSString *, id> *event = [self baseEvent];
+    [event addEntriesFromDictionary: @{@"targetUrl": request.URL.absoluteString}];
+    decisionHandler(WKNavigationActionPolicyCancel);
+    _onOpenWindow(event);
+    return;
+  }
 
   if (_onShouldStartLoadWithRequest) {
     NSMutableDictionary<NSString *, id> *event = [self baseEvent];
