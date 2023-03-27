@@ -146,7 +146,7 @@ export interface WebViewRenderProcessGoneDetail {
 }
 
 export interface WebViewOpenWindow {
-  targeturl: string;
+  targetUrl: string;
 }
 
 export type WebViewEvent = NativeSyntheticEvent<WebViewNativeEvent>;
