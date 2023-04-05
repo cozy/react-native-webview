@@ -93,7 +93,7 @@ export interface WebViewRenderProcessGoneDetail {
     didCrash: boolean;
 }
 export interface WebViewOpenWindow {
-    targeturl: string;
+    targetUrl: string;
 }
 export declare type WebViewEvent = NativeSyntheticEvent<WebViewNativeEvent>;
 export declare type WebViewProgressEvent = NativeSyntheticEvent<WebViewNativeProgressEvent>;
