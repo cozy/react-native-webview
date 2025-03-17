@@ -711,11 +711,11 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
       case COMMAND_POST_MESSAGE:
         try {
           RNCWebView reactWebView = (RNCWebView) root;
-          JSONObject eventInitDict = new JSONObject();
-          eventInitDict.put("data", args.getString(0));
+          // JSONObject eventInitDict = new JSONObject();
+          // eventInitDict.put("data", args.getString(0));
           reactWebView.evaluateJavascriptWithFallback("(function () {" +
             "var event;" +
-            "var data = " + eventInitDict.toString() + ";" +
+            "var data = {\"data\":\"" + args.getString(0).replace("\"", "\\\"") + "\"};" +
             "try {" +
             "event = new MessageEvent('message', data);" +
             "} catch (e) {" +
