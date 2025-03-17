@@ -1692,7 +1692,7 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
 
       if (mRNCWebViewClient != null) {
         WebView webView = this;
-        webView.post(new Runnable() {
+        reactContext.getCurrentActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {
             if (mRNCWebViewClient == null) {
